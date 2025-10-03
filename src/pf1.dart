@@ -24,7 +24,7 @@
  * Indica quin llibre és el més antic (any de publicació més baix) i quina revista és la més recent. Mostra’ls per pantalla amb tota la seva informació (toString()).
 
  */
-void main(){
+void main() {
   List<Libro> listaLibros = new List<Libro>.filled(5, Libro());
   List<Revista> listaRevistas = new List<Revista>.filled(5, Revista());
 
@@ -35,7 +35,16 @@ void main(){
   listaLibros[0].setNumPaginas = 452;
   listaLibros[0].setGenero = "Autoayuda/Estrategia";
 
-  listaLibros[1] = Libro.conDatosCompletos("L2", "El Manifiesto Comunista", "Karl Marx y Friedrich Engels", 1848, false, null, 48, "Filosofía Política");
+  listaLibros[1] = Libro.conDatosCompletos(
+    "L2",
+    "El Manifiesto Comunista",
+    "Karl Marx y Friedrich Engels",
+    1848,
+    false,
+    null,
+    48,
+    "Filosofía Política",
+  );
 
   listaLibros[2] = Libro();
   listaLibros[2].setId = "L3";
@@ -51,7 +60,16 @@ void main(){
   listaLibros[3].setNumPaginas = 273;
   listaLibros[3].setGenero = "Estrategia Militar";
 
-  listaLibros[4] = Libro.conDatosCompletos('L5', 'Así Habló Zaratustra', 'Friedrich Nietzsche', 1883, false, null, 327, 'Filosofía');
+  listaLibros[4] = Libro.conDatosCompletos(
+    'L5',
+    'Así Habló Zaratustra',
+    'Friedrich Nietzsche',
+    1883,
+    false,
+    null,
+    327,
+    'Filosofía',
+  );
 
   //Revistas
   listaRevistas[0] = Revista.soloIdTitulo("R1", "Adbusters");
@@ -60,7 +78,16 @@ void main(){
   listaRevistas[0].setNumero = 1;
   listaRevistas[0].setPeriodicidad = "Bimestral";
 
-  listaRevistas[1] = Revista.conDatosCompletos("R2", "Jacobin", "Varios", 2010, false, null, 1, "Trimestral");
+  listaRevistas[1] = Revista.conDatosCompletos(
+    "R2",
+    "Jacobin",
+    "Varios",
+    2010,
+    false,
+    null,
+    1,
+    "Trimestral",
+  );
 
   listaRevistas[2] = Revista();
   listaRevistas[2].setId = "R3";
@@ -76,11 +103,32 @@ void main(){
   listaRevistas[3].setNumero = 1;
   listaRevistas[3].setPeriodicidad = "Bimestral";
 
-  listaRevistas[4] = Revista.conDatosCompletos("R5", "National Review", "Varios", 1955, false, null, 1, "Quincenal");
+  listaRevistas[4] = Revista.conDatosCompletos(
+    "R5",
+    "National Review",
+    "Varios",
+    1955,
+    false,
+    null,
+    1,
+    "Quincenal",
+  );
 
   //Clientes
-  Cliente cliente1 = Cliente.conDatosCompletos("78222723E", "Samuel Henares", "shc@gmail.com", "666777888", "CB12345"); 
-  Cliente cliente2 = Cliente.conDatosCompletos("12345678A", "Adrian Plaza", "apr@gmail.com", "123456789", "CB54321");
+  Cliente cliente1 = Cliente.conDatosCompletos(
+    "78222723E",
+    "Samuel Henares",
+    "shc@gmail.com",
+    "666777888",
+    "CB12345",
+  );
+  Cliente cliente2 = Cliente.conDatosCompletos(
+    "12345678A",
+    "Adrian Plaza",
+    "apr@gmail.com",
+    "123456789",
+    "CB54321",
+  );
   Cliente cliente3 = Cliente("87654321B", "Wisdom Imade");
   cliente3.email = "wi@gmail.com";
   cliente3.telefonoCliente = "987654321";
@@ -98,13 +146,13 @@ void main(){
   int contadorPrestamosLibros = 0;
   int contadorPrestamosRevistas = 0;
   for (var libro in listaLibros) {
-    if(libro.estaPrestado()){
+    if (libro.estaPrestado()) {
       contadorPrestamosLibros++;
     }
   }
 
   for (var revista in listaRevistas) {
-    if(revista.estaPrestado()){
+    if (revista.estaPrestado()) {
       contadorPrestamosRevistas++;
     }
   }
@@ -117,7 +165,7 @@ void main(){
   //Libro más antiguo
   Libro libroMasAntiguo = listaLibros[0];
   for (var libro in listaLibros) {
-    if(libro.getAnoPublicacion < libroMasAntiguo.getAnoPublicacion){
+    if (libro.getAnoPublicacion < libroMasAntiguo.getAnoPublicacion) {
       libroMasAntiguo = libro;
     }
   }
@@ -125,7 +173,7 @@ void main(){
   //Revista más reciente
   Revista revistaMasReciente = listaRevistas[0];
   for (var revista in listaRevistas) {
-    if(revista.getAnoPublicacion > revistaMasReciente.getAnoPublicacion){
+    if (revista.getAnoPublicacion > revistaMasReciente.getAnoPublicacion) {
       revistaMasReciente = revista;
     }
   }
@@ -133,7 +181,6 @@ void main(){
   print('\nEl libro más antiguo es: ${libroMasAntiguo.toString()}');
   print('\nLa revista más reciente es: ${revistaMasReciente.toString()}');
 }
-
 
 /**
  * Classe Client:
@@ -315,8 +362,7 @@ abstract class Tipos {
     if (other is Tipos) {
       return id.compareTo(other.id);
     } else {
-      throw ArgumentError('No se puede comparar con un objeto que no es Tipos');
-    }
+      throw Exception('No se puede comparar con un objeto que no es Tipos');    }
   }
 
   // Método auxiliar para mostrar "Sí" o "No" en lugar de true/false
@@ -380,7 +426,7 @@ class Libro extends Tipos {
     if (other is Libro) {
       return id.compareTo(other.id);
     } else {
-      throw ArgumentError('No se puede comparar con un objeto que no es Libro');
+            throw Exception('No se puede comparar con un objeto que no es Libro');
     }
   }
 }
@@ -439,9 +485,7 @@ class Revista extends Tipos {
     if (other is Revista) {
       return id.compareTo(other.id);
     } else {
-      throw ArgumentError(
-        'No se puede comparar con un objeto que no es Revista',
-      );
+      throw Exception('No se puede comparar con un objeto que no es Revista');
     }
   }
 }
