@@ -362,7 +362,8 @@ abstract class Tipos {
     if (other is Tipos) {
       return id.compareTo(other.id);
     } else {
-      throw Exception('No se puede comparar con un objeto que no es Tipos');    }
+      throw Exception('No se puede comparar con un objeto que no es Tipos');
+    }
   }
 
   // Método auxiliar para mostrar "Sí" o "No" en lugar de true/false
@@ -426,7 +427,7 @@ class Libro extends Tipos {
     if (other is Libro) {
       return id.compareTo(other.id);
     } else {
-            throw Exception('No se puede comparar con un objeto que no es Libro');
+      throw Exception('No se puede comparar con un objeto que no es Libro');
     }
   }
 }
