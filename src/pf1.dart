@@ -1,3 +1,11 @@
+/*
+  * Samuel Henares Choaibi
+  * 78222723E
+  * Programación Multimedia y Dispositivos Móviles
+  * Curso 2025/2026
+  * Proyecto PF1: Biblioteca Municipal
+*/
+
 /**
  * Aplicació principal (MAIN)
  * 
